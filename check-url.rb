@@ -38,4 +38,12 @@ end
 	@io.puts
 end
 
-exit(@results.select{|result| result[:success] == false }.count)
+fails = @results.select{|result| result[:success] == false }.count
+
+if fails > 0
+	3.times do
+		system "afplay Warning\\ Alarm.mp3"
+	end
+end
+
+exit fails
